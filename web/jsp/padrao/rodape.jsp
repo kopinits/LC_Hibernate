@@ -1,0 +1,1 @@
+<img src="imgs/logoEstacio.png"><strong>POS Desenvolvimento Java - Projeto Loan Control</strong> - Copyright © Todos os direitos reservados

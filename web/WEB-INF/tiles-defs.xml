@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<tiles-definitions>
+    <!-- tiles padrao -->
+    <definition name="layoutPadrao.tl" path="/jsp/padrao/layoutPadrao.jsp"/>
+
+    <definition name="index.tl" extends="layoutPadrao.tl" >
+        <put name="superior" value="/jsp/padrao/superior.jsp"/>
+        <put name="menu"  value="/jsp/padrao/menu.jsp"/>
+        <put name="conteudo" value="/jsp/padrao/corpo.jsp"/>    
+        <put name="rodape" value="/jsp/padrao/rodape.jsp"/>    
+    </definition>
+
+    <definition name="home.tl" extends="layoutPadrao.tl" >
+        <put name="superior" value="/jsp/superior.jsp"/>
+        <put name="menu"  value="/jsp/menu.jsp"/>
+        <put name="conteudo" value="/jsp/home.jsp"/>    
+        <put name="rodape" value="/jsp/padrao/rodape.jsp"/>    
+    </definition>
+
+    <definition name="esqueciSenha.tl" extends="index.tl" >
+        <put name="conteudo" value="/jsp/padrao/senha.jsp"/>    
+    </definition>
+    <!-- tiles de categoria -->
+    <definition name="listarCategoria.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/categoria/listar.jsp"/>    
+    </definition>
+
+    <definition name="categoria.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/categoria/carregar.jsp"/>    
+    </definition>
+    
+    <!-- tiles de bem_material -->
+    <definition name="listarBem.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/bem/listar.jsp"/>    
+    </definition>
+    
+    <definition name="bem.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/bem/carregar.jsp"/>    
+    </definition>
+
+    <!-- tiles de pessoa -->
+    <definition name="listarPessoa.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/pessoa/listar.jsp"/>    
+    </definition>
+
+    <definition name="pessoa.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/pessoa/carregar.jsp"/>    
+    </definition>
+
+    <!-- tiles de emprestimos -->
+    <definition name="listarEmprestimo.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/emprestimo/listar.jsp"/>    
+    </definition>
+
+    <definition name="emprestimo.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/emprestimo/carregar.jsp"/>    
+    </definition>
+
+    <!-- tiles de venda -->
+    <definition name="listarVenda.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/venda/listar.jsp"/>    
+    </definition>
+
+    <definition name="venda.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/venda/carregar.jsp"/>    
+    </definition>
+
+    <definition name="verVenda.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/venda/visualizar.jsp"/>    
+    </definition>        
+    <!-- tiles de usuario -->
+    <definition name="meusdados.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/usuario/carregar.jsp"/>    
+    </definition>
+    
+    <definition name="trocaSenha.tl" extends="home.tl" >
+        <put name="conteudo" value="/jsp/usuario/trocaSenha.jsp"/>    
+    </definition>
+    
+</tiles-definitions>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="formLogin" type="com.br.kopinits.loancontrol.forms.LoginForm"/>
+        <form-bean name="formCategoria" type="com.br.kopinits.loancontrol.forms.CategoriaForm"/>
+        <form-bean name="formBem" type="com.br.kopinits.loancontrol.forms.BemMaterialForm"/>
+        <form-bean name="formPessoa" type="com.br.kopinits.loancontrol.forms.PessoaForm"/>
+        <form-bean name="formEmprestimo" type="com.br.kopinits.loancontrol.forms.EmprestimoForm"/>
+        <form-bean name="formVenda" type="com.br.kopinits.loancontrol.forms.VendaForm"/>
+    </form-beans>
+    
+    <global-forwards>
+        <forward name="NAO_AUTENTICADO" path="/index.do" redirect="true" />
+        <forward name="ERRO" path="home.tl" />
+    </global-forwards>
+    
+    <action-mappings>
+        <!-- Actions iniciais -->
+        <action path="/index" type="com.br.kopinits.loancontrol.struts.IndexAction">
+            <forward name="SUCESSO" path="index.tl" />    
+        </action>
+        
+        <action input="/" name="formLogin" path="/esqueciSenha" type="com.br.kopinits.loancontrol.struts.EsqueciSenhaAction" validate="false">
+            <forward name="SUCESSO" path="esqueciSenha.tl" redirect="true"/>    
+        </action>
+
+        <action path="/logoff" scope="request" type="com.br.kopinits.loancontrol.struts.LogoffAction" validate="true">
+            <forward name="SUCESSO" path="/index.do" redirect="true" />    
+        </action>
+
+        <action input="/" name="formLogin" path="/login" scope="request" type="com.br.kopinits.loancontrol.struts.LoginAction" validate="true">
+            <forward name="SUCESSO" path="home.tl" />    
+            <forward name="ERRO" path="/index.do" redirect="true" />
+        </action>
+        
+        <action input="/" name="formLogin" path="/home" scope="request" type="com.br.kopinits.loancontrol.struts.LoginAction" validate="false">
+            <forward name="SUCESSO" path="home.tl" />    
+            <forward name="ERRO" path="/index.do" redirect="true" />
+        </action>
+
+        <!-- Actions do bean Usuario -->
+        <action input="/"  name="formLogin" path="/cadastro" scope="request" type="com.br.kopinits.loancontrol.struts.CadastrarAction" validate="false">
+            <forward name="SUCESSO" path="/index.do" redirect="true" />    
+            <forward name="ERRO" path="/index.do" />
+        </action>
+
+        <action input="/" name="formLogin" path="/meusDados" scope="request" type="com.br.kopinits.loancontrol.struts.MeusDadosAction" validate="false">
+            <forward name="SUCESSO" path="meusdados.tl" />    
+        </action>
+        
+        <action input="/" name="formLogin" path="/salvarDados" scope="request" type="com.br.kopinits.loancontrol.struts.MeusDadosAction" validate="false">
+            <forward name="SUCESSO" path="/meusDados.do" />    
+        </action>
+        
+        <action input="/" name="formLogin" path="/trocaSenha" scope="request" type="com.br.kopinits.loancontrol.struts.MeusDadosAction" validate="false">
+            <forward name="SUCESSO" path="trocaSenha.tl" />    
+            <forward name="SALVOU" path="/meusDados.do" redirect="true"/> 
+        </action>
+        
+       
+        <!-- Actions do bean Categoria -->
+        <action path="/listarCategoria" scope="request" type="com.br.kopinits.loancontrol.struts.ListarCategoriaAction" name="formCategoria" >
+            <forward name="SUCESSO" path="listarCategoria.tl" />    
+        </action>
+
+        <action path="/incluirCategoria" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarCategoriaAction" name="formCategoria" >
+            <forward name="SUCESSO" path="categoria.tl" redirect="true"/>    
+            <forward name="ERRO" path="/listarCategoria.do" redirect="true"/>
+        </action>
+        
+        <action path="/categoria" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarCategoriaAction" name="formCategoria" >
+            <forward name="SUCESSO" path="categoria.tl" />    
+            <forward name="SALVOU" path="/listarCategoria.do" redirect="true"/>    
+            <forward name="ERRO" path="/listarCategoria.do" redirect="true"/>
+        </action>
+        
+        <!-- Actions do bean BemMatertial -->
+        <action path="/listarBem" scope="request" type="com.br.kopinits.loancontrol.struts.ListarBemAction" name="formBem">
+            <forward name="SUCESSO" path="listarBem.tl" />    
+        </action>
+
+        <action path="/incluirBem" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarBemAction" name="formBem" >
+            <forward name="SUCESSO" path="bem.tl" redirect="true"/>    
+            <forward name="ERRO" path="/listarBem.do" redirect="true"/>
+        </action>
+        
+         <action path="/bemMaterial" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarBemAction" name="formBem" >
+            <forward name="SUCESSO" path="bem.tl" />    
+            <forward name="SALVOU" path="/listarBem.do" redirect="true"/>    
+            <forward name="ERRO" path="/listarBem.do" redirect="true"/>
+        </action>
+        
+        <!-- Actions do bean Pessoa -->
+        <action path="/listarPessoa" scope="request" type="com.br.kopinits.loancontrol.struts.ListarPessoaAction" name="formPessoa">
+            <forward name="SUCESSO" path="listarPessoa.tl" />    
+        </action>
+
+        <action path="/incluirPessoa" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarPessoaAction" name="formPessoa" >
+            <forward name="SUCESSO" path="pessoa.tl" redirect="true"/>    
+            <forward name="ERRO" path="/listarPessoa.do" redirect="true"/>
+        </action>
+        
+         <action path="/pessoa" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarPessoaAction" name="formPessoa" >
+            <forward name="SUCESSO" path="pessoa.tl" />    
+            <forward name="SALVOU" path="/listarPessoa.do" redirect="true"/>    
+            <forward name="ERRO" path="/listarPessoa.do" redirect="true"/>
+        </action>
+        
+        <!-- Actions do bean Emprestimo -->
+        <action path="/listarEmprestimo" scope="request" type="com.br.kopinits.loancontrol.struts.ListarEmprestimoAction" name="formEmprestimo" validate="false" >
+            <forward name="SUCESSO" path="listarEmprestimo.tl" />    
+        </action>
+
+        <action path="/incluirEmprestimo" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarEmprestimoAction" name="formEmprestimo" validate="false">
+            <forward name="SUCESSO" path="emprestimo.tl" redirect="true"/>    
+            <forward name="ERRO" path="/listarEmprestimo.do" redirect="true"/>
+        </action>
+        
+         <action path="/emprestimo" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarEmprestimoAction" name="formEmprestimo" validate="false">
+            <forward name="SUCESSO" path="emprestimo.tl" />    
+            <forward name="SALVOU" path="/listarEmprestimo.do" redirect="true"/>    
+            <forward name="ERRO" path="/listarEmprestimo.do" redirect="true"/>
+        </action>
+        
+        <!-- Actions do bean Venda -->
+        <action path="/listarVenda" scope="request" type="com.br.kopinits.loancontrol.struts.ListarVendaAction" name="formVenda" validate="false" >
+            <forward name="SUCESSO" path="listarVenda.tl" />    
+        </action>
+
+        <action path="/incluirVenda" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarVendaAction" name="formVenda" validate="false">
+            <forward name="SUCESSO" path="venda.tl" redirect="true"/>    
+            <forward name="ERRO" path="/listarVenda.do" redirect="true"/>
+        </action>
+        
+         <action path="/venda" scope="request" type="com.br.kopinits.loancontrol.struts.ProcessarVendaAction" name="formVenda" validate="false">
+            <forward name="SUCESSO" path="venda.tl" />    
+            <forward name="CARREGAR" path="verVenda.tl" />    
+            <forward name="ERRO" path="/listarVenda.do" redirect="true"/>
+        </action>        
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="lc.menssagens_pt_BR" null="false"/>    
+    
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+    </plug-in>
+    
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>

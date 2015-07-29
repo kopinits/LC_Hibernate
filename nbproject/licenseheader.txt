@@ -1,0 +1,10 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}POS Desenvolvimento JAVA - Estácio 2014
+${licensePrefix}Projeto de conclusão da disciplina de Frameworks ${licensePrefix}
+${licensePrefix}Aluno: Markus Kopinits dos Santos ${licensePrefix}
+${licensePrefix}O código pode ser copiado ou reproduzido, desde que respeite-se a autoria ${licensePrefix}
+<#if licenseLast??>
+${licenseLast}
+</#if>
